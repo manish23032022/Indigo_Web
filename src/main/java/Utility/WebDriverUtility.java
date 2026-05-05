@@ -92,6 +92,33 @@ public class WebDriverUtility {
     public void selectByIndex(WebElement element, int index) {
         new Select(element).selectByIndex(index);
     }
+    
+    public void selectMultiDropdown(WebDriver driver,WebElement dropdownBtn,String optionXpath,String... values) {
+           waitForElementClickable(driver, dropdownBtn).click();
+
+           for (String value : values) {
+
+        	   String dynamicXpath = String.format(optionXpath, value);
+
+        	   WebElement option = new WebDriverWait(driver, Duration.ofSeconds(10))
+        			   .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dynamicXpath)));
+
+        	   if (!option.getAttribute("class").contains("selected")) {
+        		   				option.click();
+        		   				System.out.println("Selected → " + value);
+        	   }
+           }
+
+           dropdownBtn.click();
+    }
+    
+    
+    public void scrollToCenter(WebDriver driver, WebElement element) {
+        ((JavascriptExecutor) driver).executeScript(
+            "arguments[0].scrollIntoView({block: 'center'});", element
+        );
+    }
+    
 
     /** Select dynamic value safely */
     public boolean selectDynamicValue(WebElement element, String text) {
