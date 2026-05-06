@@ -18,12 +18,12 @@ public class EventGrading_page {
 	        this.webUtil = new WebDriverUtility();
 	    }
 	    
-	    @FindBy(xpath = "//button[@id='Discard_yes']")
-	    private WebElement acceptYesPopup;
+	   // @FindBy(xpath = "//button[@id='Discard_yes']")
+	   // private WebElement acceptYesPopup;
 	    
 
-	   // @FindBy(xpath = "//label[contains(.,'Certified')]/following-sibling::button[text()='YES']")
-	  //  private WebElement acceptYesPopup;
+	    @FindBy(xpath = "//label[contains(.,'Certified')]/following-sibling::button[text()='YES']")
+	    private WebElement acceptYesPopup;
        
 
 	    @FindBy(xpath = "//h2[contains(text(),'Nature of Duty')]/descendant::input[@id='pm']")
@@ -63,8 +63,12 @@ public class EventGrading_page {
 	    /** Search and click HPFD Grade Button  
 	     * @throws InterruptedException */
 	    public void enterGradingDetails(String regNum) throws InterruptedException {
+	    	webUtil.sleep(2000);
 	    	webUtil.safeClick(driver, acceptYesPopup);
+	    	System.out.println("sucessfully click on yes popup");
+	    	webUtil.sleep(2000);
 	        webUtil.safeClick(driver,pmButton);
+	        webUtil.sleep(2000);
 	        webUtil.safeType(driver, registrationInputField, regNum);
 	        webUtil.selectByIndex(typeOfCheckDrop, 1);
 	        webUtil.selectByIndex(typeOfApproachDrop, 2);
