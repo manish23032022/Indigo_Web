@@ -20,6 +20,11 @@ public class EventGrading_page {
 	    
 	    @FindBy(xpath = "//button[@id='Discard_yes']")
 	    private WebElement acceptYesPopup;
+	    
+
+	   // @FindBy(xpath = "//label[contains(.,'Certified')]/following-sibling::button[text()='YES']")
+	  //  private WebElement acceptYesPopup;
+       
 
 	    @FindBy(xpath = "//h2[contains(text(),'Nature of Duty')]/descendant::input[@id='pm']")
 	    private WebElement pmButton;

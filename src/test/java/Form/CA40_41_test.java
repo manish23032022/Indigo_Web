@@ -12,6 +12,28 @@ import Common_Pom.BecomeUserPage;
 
 public class CA40_41_test extends BaseClass{
 	
+	
+
+	@Test(priority = 0,
+		    groups = {"smokeTest"},
+			description = "Trainer submits CA42 Form E2E Happy Path")
+	
+		public void validationForGeneralInfoTrainee() throws Throwable {
+		String trainerId = fileUtil.getDataFromPropertiesFile("becomeCA40/41_TrainerId");
+        String lessonName=fileUtil.getDataFromPropertiesFile("lessonCA40/41_Event");
+        String regNum=fileUtil.getDataFromPropertiesFile("registrationNumber");
+        BecomeUserPage becomeUser=new BecomeUserPage(driver);
+        becomeUser.becomeUser_method(trainerId);
+        
+        GradingAssesementMod_page gradingAssesementBtn=new GradingAssesementMod_page(driver);
+        gradingAssesementBtn.clickOnGradingSubMod();
+        gradingAssesementBtn.searchAndClickGradeBtn(lessonName);
+        
+		
+	}
+	
+	
+	
 	@Test(priority = 1,
 		    groups = {"smokeTest"},
 			description = "Trainer submits CA42 Form E2E Happy Path")

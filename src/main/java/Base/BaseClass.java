@@ -41,6 +41,16 @@ public class BaseClass {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(new ChromeOptions());
+            
+            /**  these method for run Headless mode means without UI
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");          // run in headless mode
+            options.addArguments("--disable-gpu");       // recommended
+            options.addArguments("--window-size=1920,1080"); // avoid UI issues
+
+            driver = new ChromeDriver(options);
+            **/
+
             System.out.println("Launching Chrome browser");
         } 
         else if (browser.equalsIgnoreCase("firefox")) {
