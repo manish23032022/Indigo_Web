@@ -54,23 +54,10 @@ public class CA42_OverallOutcome_page {
              WebElement doneBtn = activeModal.findElement(doneBtnLocator);
 
              webUtil.safeClick(driver, plusBtn);
-             webUtil.sleep(1000);
-
+            
              webUtil.safeType(driver, commentArea, "Evaluation phase obs comment by manish");
-             webUtil.sleep(1000);
-            System.out.println("sucessful click on comment btn");
-            webUtil.sleep(1000);
-            
-
-            webUtil.safeClick(driver, subTaskBtn);
-            System.out.println("sucessful click on subTask btn");
-            webUtil.sleep(1000);
-            
-
+             webUtil.safeClick(driver, subTaskBtn);
             webUtil.safeClick(driver, checkBoxBtn);
-            System.out.println("sucessful click on plus btn");
-            webUtil.sleep(1000);
-
             webUtil.safeClick(driver, doneBtn);
             webUtil.sleep(1000);
         }
