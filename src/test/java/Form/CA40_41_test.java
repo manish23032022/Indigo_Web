@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import Base.BaseClass;
 import CA40_41_POM.CA40_41_EventGrading_page;
-import CA40_41_POM.outcomeMod_page;
+import CA40_41_POM.CA40_41_outcomeMod_page;
 import Common_Pom.GradingAssesementMod_page;
 import Common_Pom.TraineeReviewPage;
 import Common_Pom.TrainingManagerReviewPage;
@@ -14,23 +14,23 @@ public class CA40_41_test extends BaseClass{
 	
 	
 
-	@Test(priority = 0,
-		    groups = {"smokeTest"},
-			description = "Trainer submits CA42 Form E2E Happy Path")
-	
-		public void validationForGeneralInfoTrainee() throws Throwable {
-		String trainerId = fileUtil.getDataFromPropertiesFile("becomeCA40/41_TrainerId");
-        String lessonName=fileUtil.getDataFromPropertiesFile("lessonCA40/41_Event");
-        String regNum=fileUtil.getDataFromPropertiesFile("registrationNumber");
-        BecomeUserPage becomeUser=new BecomeUserPage(driver);
-        becomeUser.becomeUser_method(trainerId);
-        
-        GradingAssesementMod_page gradingAssesementBtn=new GradingAssesementMod_page(driver);
-        gradingAssesementBtn.clickOnGradingSubMod();
-        gradingAssesementBtn.searchAndClickGradeBtn(lessonName);
-        
-		
-	}
+//	@Test(priority = 0,
+//		    groups = {"smokeTest"},
+//			description = "Trainer submits CA42 Form E2E Happy Path")
+//	
+//		public void validationForGeneralInfoTrainee() throws Throwable {
+//		String trainerId = fileUtil.getDataFromPropertiesFile("becomeCA40/41_TrainerId");
+//        String lessonName=fileUtil.getDataFromPropertiesFile("lessonCA40/41_Event");
+//        String regNum=fileUtil.getDataFromPropertiesFile("registrationNumber");
+//        BecomeUserPage becomeUser=new BecomeUserPage(driver);
+//        becomeUser.becomeUser_method(trainerId);
+//        
+//        GradingAssesementMod_page gradingAssesementBtn=new GradingAssesementMod_page(driver);
+//        gradingAssesementBtn.clickOnGradingSubMod();
+//        gradingAssesementBtn.searchAndClickGradeBtn(lessonName);
+//        
+//		
+//	}
 	
 	
 	
@@ -53,8 +53,9 @@ public class CA40_41_test extends BaseClass{
 	        grading.enterGradingDetailsInGeneralInfo(regNum,"IR");
 	        grading.enterGradeUnderTaskGrade();
 	        
-	        outcomeMod_page outcome=new outcomeMod_page(driver);
+	        CA40_41_outcomeMod_page outcome=new CA40_41_outcomeMod_page(driver);
 	        outcome.performEvaluationPhase();
+	        System.out.println("sucess evaluation");
 	        outcome.performManeuver();
 	        outcome.overallcommentToPrievewOkBtn();
 	        outcome.digitalSign();

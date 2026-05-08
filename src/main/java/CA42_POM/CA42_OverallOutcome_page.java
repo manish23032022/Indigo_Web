@@ -1,5 +1,6 @@
-package CA40_41_POM;
+package CA42_POM;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,60 +9,66 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utility.WebDriverUtility;
 
-public class outcomeMod_page {
-
-    private WebDriver driver;
+public class CA42_OverallOutcome_page {
+	private WebDriver driver;
     private WebDriverUtility webUtil;
+    private WebDriverWait wait;
 
-    public outcomeMod_page(WebDriver driver) {
+    public CA42_OverallOutcome_page(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
         this.webUtil = new WebDriverUtility();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[text()='EVALUATION PHASE']")
-    private WebElement evaluationPhasePlusBtn;
-    
-
-    @FindBy(xpath = "//span[text()='MANEUVER PHASE']")
-    private WebElement maneuverPlusBtn;
-    
-    
-
     @FindBy(xpath = "//table[@id='overall_COM_GRD_LHS']//td[@data-grade-val='4']")
-    private List<WebElement> gradeFourCellsforEvaluationPhase;
-    
-
-    @FindBy(xpath = "//table[@id='MANoverall_COM_GRD_LHS']//td[@data-grade-val='4']")
-    private List<WebElement> gradeFourCellsforManeuverPhase;
+    private List<WebElement> allOverallGradeFourCells;
 
     private By activeModalLocator = By.xpath("//div[contains(@class,'modal') and contains(@style,'display: block')]");
     private By plusBtnLocator = By.xpath(".//button[contains(@class,'fa-plus')]");
-    private By commentAreaLocator = By.xpath(".//textarea[contains(@class,'comment-textarea')]");
-    private By doneBtnLocator = By.xpath(".//button[contains(text(),'DONE')]");
+    private By commentAreaLocator = By.xpath(".//textarea[contains(@class,'form-control comment-textarea')]");
+    private By subTaskBtnLocator = By.xpath(".//button[contains(text(),'Select subtasks')]");
 
-    public void performEvaluationPhase() {
+    private By checkBoxBtnLocator = By.xpath(".//input[@type='checkbox']");
+    private By doneBtnLocator = By.xpath(".//button[contains(text(),'Done')]");
+    
 
-        webUtil.safeClick(driver, evaluationPhasePlusBtn);
+    
+    
+    public void performOverallGrade() {
 
-        for (WebElement cell : gradeFourCellsforEvaluationPhase) {
+        for (WebElement cell : allOverallGradeFourCells) {
+        	 webUtil.safeClick(driver, cell);
+             webUtil.sleep(1000);
 
-            webUtil.safeClick(driver, cell);
+             WebElement activeModal = driver.findElement(activeModalLocator);
+             WebElement plusBtn = activeModal.findElement(plusBtnLocator);
+             WebElement commentArea = activeModal.findElement(commentAreaLocator);
+             WebElement subTaskBtn=activeModal.findElement(subTaskBtnLocator);
+             WebElement checkBoxBtn=activeModal.findElement(checkBoxBtnLocator);
+             WebElement doneBtn = activeModal.findElement(doneBtnLocator);
+
+             webUtil.safeClick(driver, plusBtn);
+             webUtil.sleep(1000);
+
+             webUtil.safeType(driver, commentArea, "Evaluation phase obs comment by manish");
+             webUtil.sleep(1000);
+            System.out.println("sucessful click on comment btn");
             webUtil.sleep(1000);
+            
 
-            WebElement activeModal = driver.findElement(activeModalLocator);
-
-            WebElement plusBtn = activeModal.findElement(plusBtnLocator);
-            WebElement commentArea = activeModal.findElement(commentAreaLocator);
-            WebElement doneBtn = activeModal.findElement(doneBtnLocator);
-
-            webUtil.safeClick(driver, plusBtn);
+            webUtil.safeClick(driver, subTaskBtn);
+            System.out.println("sucessful click on subTask btn");
             webUtil.sleep(1000);
+            
 
-            webUtil.safeType(driver, commentArea, "Evaluation phase obs comment by manish");
+            webUtil.safeClick(driver, checkBoxBtn);
+            System.out.println("sucessful click on plus btn");
             webUtil.sleep(1000);
 
             webUtil.safeClick(driver, doneBtn);
@@ -69,34 +76,7 @@ public class outcomeMod_page {
         }
     }
     
-    public void performManeuver() {
-    	
-    	webUtil.sleep(3000);
-
-        webUtil.jsClickAndScrollUp(driver, maneuverPlusBtn);
-
-        for (WebElement cell : gradeFourCellsforManeuverPhase) {
-
-            webUtil.safeClick(driver, cell);
-            webUtil.sleep(1000);
-
-            WebElement activeModal = driver.findElement(activeModalLocator);
-
-            WebElement plusBtn = activeModal.findElement(plusBtnLocator);
-            WebElement commentArea = activeModal.findElement(commentAreaLocator);
-            WebElement doneBtn = activeModal.findElement(doneBtnLocator);
-
-            webUtil.safeClick(driver, plusBtn);
-            webUtil.sleep(1000);
-
-            webUtil.safeType(driver, commentArea, "Maneuver phase obs comment by manish");
-            webUtil.sleep(1000);
-
-            webUtil.safeClick(driver, doneBtn);
-            webUtil.sleep(1000);
-        }
-    }
-
+    
     @FindBy(xpath = "//label[text()='REMARKS']")
     private WebElement remarkText;
     
