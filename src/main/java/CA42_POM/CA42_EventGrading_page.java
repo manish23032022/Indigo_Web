@@ -7,12 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import Utility.WebDriverUtility;
 
-public class EventGrading_page {
+public class CA42_EventGrading_page {
 	
 	 private WebDriver driver;
 	    private WebDriverUtility webUtil;
 
-	    public EventGrading_page(WebDriver driver) {
+	    public CA42_EventGrading_page(WebDriver driver) {
 	        this.driver = driver;
 	        PageFactory.initElements(driver, this);
 	        this.webUtil = new WebDriverUtility();
