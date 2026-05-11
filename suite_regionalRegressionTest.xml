@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regional Regression Suite">
+
+    <test name="Regional Regression Test">
+
+        <groups>
+            <run>
+                <include name="regionalRegressionTest"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="Form.HarmonizedPrimaryFlightDisp_test"/>
+        </classes>
+
+    </test>
+
+</suite>
