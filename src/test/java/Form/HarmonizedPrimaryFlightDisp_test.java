@@ -61,6 +61,7 @@ public class HarmonizedPrimaryFlightDisp_test extends BaseClass {
     @Test(
         priority = 2,
         groups = {"regressionTest"},
+        dependsOnMethods = "end2endTrainerSubmitEventForTrainee",
         description = "Trainee accepts Acknowledgement"
     )
 
@@ -91,6 +92,7 @@ public class HarmonizedPrimaryFlightDisp_test extends BaseClass {
     @Test(
         priority = 3,
         groups = {"regressionTest"},
+        dependsOnMethods = "end2endTraineeAcceptAcknowledgement",
         description = "Admin Approves After Trainee Submission"
     )
 

@@ -12,6 +12,7 @@
 
         <classes>
             <class name="Form.HarmonizedPrimaryFlightDisp_test"/>
+             <class name="Form.CA42_test"/>
         </classes>
 
     </test>

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Complete Automation Suite">
+
+    <test name="All Tests">
+
+        <classes>
+            <class name="Form.HarmonizedPrimaryFlightDisp_test"/>
+            <class name="Form.CA42_test"/>
+        </classes>
+
+    </test>
+
+</suite>
